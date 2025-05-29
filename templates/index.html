@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physician Notetaker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Optional: Add Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body data-theme="light">
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Physician Notetaker</h1>
+            <p class="tagline">Transform Patient Conversations into Structured Medical Notes</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-file-upload"></i> Upload Transcript</h2>
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Select Transcript File</h3>
+                        <p>Supported formats: .txt, .docx</p>
+                        <span class="file-text">No file selected</span>
+                        <input type="file" name="file" id="fileInput" class="file-input" accept=".txt,.docx" required>
+                    </div>
+                    <button type="submit" class="btn btn-block">Analyze & Structure</button>
+                </form>
+            </div>
+
+            <div id="loading">
+                <div class="spinner"></div>
+                <h3>Processing Transcript</h3>
+                <p>This may take a moment...</p>
+            </div>
+
+            <div id="result" class="card" style="display: none;">
+                <h2 class="card-title"><i class="fas fa-file-medical"></i> Structured Medical Notes</h2>
+                <!-- Result content populated by JS -->
+            </div>
+
+            <button id="download" class="btn" style="display: none;">
+                <i class="fas fa-download"></i> Download Structured Notes
+            </button>
+        </main>
+
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <span class="toggle-icon light">🌞</span>
+            <span class="toggle-icon dark">🌙</span>
+        </button>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
