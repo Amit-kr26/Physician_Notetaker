@@ -4,9 +4,7 @@ const notification = document.getElementById('notification');
 
 // Check for saved theme
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    body.setAttribute('data-theme', savedTheme);
-}
+body.setAttribute('data-theme', savedTheme || 'dark');
 
 themeToggle.addEventListener('click', () => {
     const currentTheme = body.getAttribute('data-theme');
